@@ -1,7 +1,7 @@
 {
-  "name": "reactAndReduxES6",
+  "name": "react-and-redux-es6",
   "version": "0.1.0",
-  "homepage": "http://henrikmathiesen.github.io/reactAndReduxES6",
+  "homepage": "http://henrikmathiesen.github.io/react-and-redux-es6",
   "private": true,
   "devDependencies": {
     "gh-pages": "0.12.0",
