@@ -23,6 +23,7 @@
     "test": "react-scripts test --env=jsdom",
     "deploy": "npm run build && gh-pages -d build",
     "build": "react-scripts build",
+    "clean-gh-pages": "rm -rf node_modules/gh-pages/.cache",
     "eject": "react-scripts eject"
   }
 }
