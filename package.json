@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://henrikmathiesen.github.io/reactAndReduxES6",
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.8.4"
   },
   "dependencies": {
