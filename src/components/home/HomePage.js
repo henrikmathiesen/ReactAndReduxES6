@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+// TODO: import real jumbotron and use it
+// https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-bootstrap
+// https://react-bootstrap.github.io/components.html#jumbotron
+
 class HomePage extends Component {
     render() {
         return (
