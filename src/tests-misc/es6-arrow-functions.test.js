@@ -1,116 +1,127 @@
 describe('ES6 arrow functions', () => {
 
-    it('A function with no parameters requires parentheses', () => {
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+    it('Should understand that a function with no parameters requires parentheses', () => {
         const foo = () => { return 'bar' };
         const expected = 'bar';
         const actual = foo();
 
-        expect(expected).toEqual(actual);
+        expect(actual).toEqual(expected);
     });
 
-    it('A function with multiple parameters requires parentheses', () => {
+    it('Should understand that a function with multiple parameters requires parentheses', () => {
         const foo = (a, b) => { return a + b };
         const expected = 2;
         const actual = foo(1, 1);
 
-        expect(expected).toEqual(actual);
+        expect(actual).toEqual(expected);
     });
 
-    it('A function with one parameter does not require parameters', () => {
+    it('Should understand that a function with one parameter does not require parameters', () => {
         const foo = name => { return 'Hi ' + name };
         const expected = 'Hi Kalle';
         const actual = foo('Kalle');
 
-        expect(expected).toEqual(actual);
+        expect(actual).toEqual(expected);
     });
 
-    it('If a function has no curly braces then return statement is used automaticly', () => {
+    it('Should understand that if a function has no curly braces then return statement is used automaticly', () => {
         const foo = num => num + 1;
         const expected = 3;
         const actual = foo(2);
 
-        expect(expected).toEqual(actual);
+        expect(actual).toEqual(expected);
     });
 
-    it('Arrow functions are short and anonymous', () => {
+    it('Should understand that arrow functions are short and anonymous', () => {
         const names = ['Adam', 'Bertil', 'Ceasar'];
         const expected = [4, 6, 6];
         const actual = names.map(name => name.length);
 
-        expect(expected).toEqual(actual);
+        expect(actual).toEqual(expected);
     });
 
     describe('The this pointer', () => {
 
         it('Should first understand this pointer problem in the past (using var here, just because ...) -- Sample A', () => {
+            var doSomeThing = function (cb) {
+                cb();
+            };
+
             var someObj = {
                 name: 'Adam',
-                getName: function () {
-                    return this.name; // This works
+                getName: function (cb) {
+                    var that = this;
+                    doSomeThing(function () {
+                        // cb(this.name);                                    -- Wont work since this points elsewhere
+                        cb(that.name);                                   //  -- Will work
+                    });
                 }
             };
 
             var expected = 'Adam';
-            var actual = someObj.getName();
+            var actual;
 
-            expect(expected).toEqual(actual);
+            someObj.getName(function (name) {
+                actual = name;
+            });
+
+            expect(actual).toEqual(expected);
         });
 
         it('Should first understand this pointer problem in the past (using var here, just because ...) -- Sample B', () => {
+            var doSomeThing = function (cb) {
+                cb();
+            };
+
             var someObj = {
                 name: 'Adam',
-                getName: function () {
-                    var that = this;
-                    var someFunc = function () {
-                        // return this.name; -- Wont work since this points elsewhere
-                        return that.name;
-                    };
-
-                    return someFunc();
+                getName: function (cb) {
+                    doSomeThing.bind(this)(cb.bind(this, this.name));       // -- Will work but messy
                 }
             };
 
             var expected = 'Adam';
-            var actual = someObj.getName();
+            var actual;
 
-            expect(expected).toEqual(actual);
+            someObj.getName(function (name) {
+                actual = name;
+            });
+
+            expect(actual).toEqual(expected);
         });
 
-        it('Should first understand this pointer problem in the past (using var here, just because ...) -- Sample C', () => {
-            var someObj = {
-                name: 'Adam',
-                getName: function () {
-                    var someFunc = function () {
-                        return this.name;
-                    };
+        it('Should then understand that an arrow function does not create its own this context, so this has its original meaning from the enclosing context', () => {
 
-                    return someFunc.bind(this)(); // This also works
-                }
+            function doSomeThing(cb) {
+                cb();
             };
 
-            var expected = 'Adam';
-            var actual = someObj.getName();
-
-            expect(expected).toEqual(actual);
-        });
-
-        it('Should then understand that an arrow function does not create its own this context, so this has its original meaning from the enclosing context ', () => {
             const someObj = {
                 name: 'Adam',
-                getName: () => {
-                    //return this.name; -- Wont work since this points elsewhere (compare with Sample A)
-                    return someObj.name;
+                getName: function (cb) {
+                    doSomeThing(() => { 
+                        cb(this.name);                                      // -- Will work since we DO NOT loose this context, because of arrow function
+                    });
                 }
             };
 
             const expected = 'Adam';
-            const actual = someObj.getName();
+            let actual;
 
-            expect(expected).toEqual(actual);
+            // This works as well (sending in a regular function as callback)
+            // someObj.getName(function (name) {
+            //     actual = name;
+            // });
+
+            someObj.getName(name => {
+                actual = name;
+            });
+
+            expect(actual).toEqual(expected);
+
         });
-
-        // However best practices seems to say that arrow functions should not be used like in the example above
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Arrow_functions_used_as_methods
 
     });
 
