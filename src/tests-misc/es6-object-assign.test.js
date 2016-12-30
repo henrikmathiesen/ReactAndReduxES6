@@ -16,6 +16,22 @@ describe('The Object.assign() method', () => {
         expect(expected).toEqual(true);
     });
 
+    it('Should first get some understanding -- C', () => { 
+        const num01 = 1
+        const num02 = 1;
+        const expected = num01 === num02;
+
+        expect(expected).toEqual(true);
+    });
+
+    it('Should first get some understanding -- D', () => { 
+        const num01 = 1
+        const num02 = num01;
+        const expected = num01 === num02;
+
+        expect(expected).toEqual(true);
+    });
+
     it('Should work with babel and this test environment', () => {
         const obj = { a: 1 };
         const copy = Object.assign({}, obj);
