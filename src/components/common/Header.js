@@ -7,8 +7,11 @@ const Header = () => (
         <IndexLinkContainer to="/">
             <NavItem>Home</NavItem>
         </IndexLinkContainer>
-        <LinkContainer to="/about">
+        <LinkContainer to="about">
             <NavItem>About</NavItem>
+        </LinkContainer>
+        <LinkContainer to="courses">
+            <NavItem>Courses</NavItem>
         </LinkContainer>
     </Nav>
 );
