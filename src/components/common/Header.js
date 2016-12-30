@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
-
-// TODO: import real jumbotron and use it
-// https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-bootstrap
-// https://react-bootstrap.github.io/components.html#jumbotron
+import { Nav, NavItem } from 'react-bootstrap';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 
 const Header = () => (
-    <nav>
-        <IndexLink to="/" activeClassName="active">Home</IndexLink>
-        { " | " }
-        <Link to="/about" activeClassName="active">About</Link>
-    </nav>
+    <Nav bsStyle="pills">
+        <IndexLinkContainer to="/">
+            <NavItem>Home</NavItem>
+        </IndexLinkContainer>
+        <LinkContainer to="/about">
+            <NavItem>About</NavItem>
+        </LinkContainer>
+    </Nav>
 );
 
 export default Header;
