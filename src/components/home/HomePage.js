@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Jumbotron, Button } from 'react-bootstrap';
 
 class HomePage extends Component {
@@ -8,9 +8,9 @@ class HomePage extends Component {
             <Jumbotron>
                 <h1>Course Administration</h1>
                 <div>
-                    <Link to="about">
+                    <LinkContainer to="about">
                         <Button bsStyle="primary" bsSize="large">Learn more</Button>
-                    </Link>
+                    </LinkContainer>
                 </div>
             </Jumbotron>
         );
