@@ -14,6 +14,7 @@ class CoursePage extends Component {
             }
         };
 
+        // Place these in the constructor and not in the render method, for performance reasons
         this.changeCourse = this.changeCourse.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onClickSave = this.onClickSave.bind(this);
