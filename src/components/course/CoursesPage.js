@@ -82,7 +82,7 @@ class CoursePage extends Component {
 }
 
 CoursePage.propTypes = {
-    //dispatch: PropTypes.func.isRequired, -- not used since we use aproach B
+    //dispatch: PropTypes.func.isRequired, -- no longer injected since we use aproach B
     courses: PropTypes.array.isRequired,
     createCourse: PropTypes.func.isRequired
 };
