@@ -10,7 +10,7 @@ class CoursePage extends Component {
 
         this.state = {
             course: {
-                title: null
+                title: ''
             }
         };
 
@@ -32,7 +32,7 @@ class CoursePage extends Component {
 
     onClickSave() {
         console.log(`Saving course: ${this.state.course.title}`);
-        this.changeCourse(null);
+        this.changeCourse('');
     }
 
     render() {
@@ -55,7 +55,7 @@ class CoursePage extends Component {
                         <div className="col-xs-9 col-sm-8">
                             <FormControl
                                 type="text"
-                                value={this.state.course.title || ''}
+                                value={this.state.course.title}
                                 placeholder="Course name"
                                 onChange={this.onTitleChange} />
                         </div>
