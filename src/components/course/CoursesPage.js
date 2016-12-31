@@ -14,11 +14,30 @@ class CoursePage extends Component {
             }
         };
 
-        console.log(props);
-        console.log(context);
+        this.changeCourse = this.changeCourse.bind(this);
+        this.onTitleChange = this.onTitleChange.bind(this);
+        this.onClickSave = this.onClickSave.bind(this);
+    }
+
+    changeCourse(title) {
+        const course = this.state.course;
+        course.title = title;
+        this.setState({ course: course });
+    }
+
+    onTitleChange(event) {
+        const title = event.target.value;
+        this.changeCourse(title);
+    }
+
+    onClickSave() {
+        console.log(`Saving course: ${this.state.course.title}`);
+        this.changeCourse(null);
     }
 
     render() {
+        const buttonBsStyle = this.state.course.title ? 'success' : 'warning';
+
         return (
             <div className="row">
                 <div className="col-md-8">
@@ -36,14 +55,14 @@ class CoursePage extends Component {
                         <div className="col-xs-9 col-sm-8">
                             <FormControl
                                 type="text"
-                                value={this.state.course.title}
+                                value={this.state.course.title || ''}
                                 placeholder="Course name"
                                 onChange={this.onTitleChange} />
                         </div>
                         <div className="col-xs-3 col-sm-4">
                             <Button
                                 block
-                                bsStyle="success"
+                                bsStyle={buttonBsStyle}
                                 onClick={this.onClickSave}>
                                 Add
                             </Button>
