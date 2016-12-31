@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Button, FormControl } from 'react-bootstrap';
+import * as courseActions from '../../actions/courseActions';
 
 class CoursePage extends Component {
 
@@ -32,7 +34,9 @@ class CoursePage extends Component {
     }
 
     onClickSave() {
+        if(!this.state.course.title) { return; }
         console.log(`Saving course: ${this.state.course.title}`);
+        this.props.dispatch(courseActions.createCourse(this.state.course)); // A
         this.changeCourse('');
     }
 
@@ -45,6 +49,7 @@ class CoursePage extends Component {
                     <div className="row">
                         <div className="col-xs-12">
                             <h1>Courses</h1>
+                            {this.props.courses.map((course, index) => <div key={index}>{course.title}</div>)}
                         </div>
                     </div>
                     <div className="row">
@@ -75,4 +80,17 @@ class CoursePage extends Component {
     }
 }
 
-export default CoursePage;
+CoursePage.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    courses: PropTypes.array.isRequired
+};
+
+// Set the properties that are exposed on our component (that can be accessed above, with this.props.courses). ownProps are this components props in case we need to access those here
+function mapStateToProps(state, ownProps) {
+    return {
+        courses: state.courseReducer
+    };
+}
+
+// Omitting mapDispatchToProps (what actions to expose on our component) as second argument means that our component gets a dispatch property attached to it (this.props.dispatch(), A)
+export default connect(mapStateToProps)(CoursePage);
