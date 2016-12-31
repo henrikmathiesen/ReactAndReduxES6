@@ -46,6 +46,9 @@ class CoursePage extends Component {
     render() {
         const buttonBsStyle = this.state.course.title ? 'success' : 'warning';
 
+
+        // TODO: Replace div with bootstrap classes with the actual component, https://react-bootstrap.github.io/components.html#grid
+
         return (
             <div className="row">
                 <div className="col-md-8">
