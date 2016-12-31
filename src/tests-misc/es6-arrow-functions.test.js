@@ -4,40 +4,40 @@ describe('ES6 arrow functions', () => {
 
     it('Should understand that a function with no parameters requires parentheses', () => {
         const foo = () => { return 'bar' };
-        const expected = 'bar';
         const actual = foo();
+        const expected = 'bar';
 
         expect(actual).toEqual(expected);
     });
 
     it('Should understand that a function with multiple parameters requires parentheses', () => {
         const foo = (a, b) => { return a + b };
-        const expected = 2;
         const actual = foo(1, 1);
+        const expected = 2;
 
         expect(actual).toEqual(expected);
     });
 
     it('Should understand that a function with one parameter does not require parameters', () => {
         const foo = name => { return 'Hi ' + name };
-        const expected = 'Hi Kalle';
         const actual = foo('Kalle');
+        const expected = 'Hi Kalle';
 
         expect(actual).toEqual(expected);
     });
 
     it('Should understand that if a function has no curly braces then return statement is used automaticly', () => {
         const foo = num => num + 1;
-        const expected = 3;
         const actual = foo(2);
+        const expected = 3;
 
         expect(actual).toEqual(expected);
     });
 
     it('Should understand that arrow functions are short and anonymous', () => {
         const names = ['Adam', 'Bertil', 'Ceasar'];
-        const expected = [4, 6, 6];
         const actual = names.map(name => name.length);
+        const expected = [4, 6, 6];
 
         expect(actual).toEqual(expected);
     });
@@ -60,8 +60,8 @@ describe('ES6 arrow functions', () => {
                 }
             };
 
-            var expected = 'Adam';
             var actual;
+            var expected = 'Adam';
 
             someObj.getName(function (name) {
                 actual = name;
@@ -82,8 +82,8 @@ describe('ES6 arrow functions', () => {
                 }
             };
 
-            var expected = 'Adam';
             var actual;
+            var expected = 'Adam';
 
             someObj.getName(function (name) {
                 actual = name;
@@ -107,8 +107,8 @@ describe('ES6 arrow functions', () => {
                 }
             };
 
-            const expected = 'Adam';
             let actual;
+            const expected = 'Adam';
 
             // This works as well (sending in a regular function as callback)
             // someObj.getName(function (name) {
