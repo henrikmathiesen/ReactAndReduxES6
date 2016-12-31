@@ -34,9 +34,10 @@ class CoursePage extends Component {
     }
 
     onClickSave() {
-        if(!this.state.course.title) { return; }
+        if (!this.state.course.title) { return; }
         console.log(`Saving course: ${this.state.course.title}`);
-        this.props.dispatch(courseActions.createCourse(this.state.course)); // A
+        //this.props.dispatch(courseActions.createCourse(this.state.course)); // A
+        this.props.createCourse(this.state.course); // B
         this.changeCourse('');
     }
 
@@ -81,8 +82,9 @@ class CoursePage extends Component {
 }
 
 CoursePage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    courses: PropTypes.array.isRequired
+    //dispatch: PropTypes.func.isRequired, -- not used since we use aproach B
+    courses: PropTypes.array.isRequired,
+    createCourse: PropTypes.func.isRequired
 };
 
 // Set the properties that are exposed on our component (that can be accessed above, with this.props.courses). ownProps are this components props in case we need to access those here
@@ -92,5 +94,12 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
+// Used instead of dispatching manually above (A), instead uses B
+function mapDispatchToProps(dispatch) {
+    return {
+        createCourse: course => dispatch(courseActions.createCourse(course))
+    };
+}
+
 // Omitting mapDispatchToProps (what actions to expose on our component) as second argument means that our component gets a dispatch property attached to it (this.props.dispatch(), A)
-export default connect(mapStateToProps)(CoursePage);
+export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);
