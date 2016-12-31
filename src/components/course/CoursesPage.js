@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Button, FormControl } from 'react-bootstrap';
 import * as courseActions from '../../actions/courseActions';
 
@@ -37,7 +38,8 @@ class CoursePage extends Component {
         if (!this.state.course.title) { return; }
         console.log(`Saving course: ${this.state.course.title}`);
         //this.props.dispatch(courseActions.createCourse(this.state.course)); // A
-        this.props.createCourse(this.state.course); // B
+        //this.props.createCourse(this.state.course); // B1
+        this.props.actions.createCourse(this.state.course); // B2
         this.changeCourse('');
     }
 
@@ -84,7 +86,7 @@ class CoursePage extends Component {
 CoursePage.propTypes = {
     //dispatch: PropTypes.func.isRequired, -- no longer injected since we use aproach B
     courses: PropTypes.array.isRequired,
-    createCourse: PropTypes.func.isRequired
+    actions: PropTypes.object.isRequired
 };
 
 // Set the properties that are exposed on our component (that can be accessed above, with this.props.courses). ownProps are this components props in case we need to access those here
@@ -97,7 +99,8 @@ function mapStateToProps(state, ownProps) {
 // Used instead of dispatching manually above (A), instead uses B
 function mapDispatchToProps(dispatch) {
     return {
-        createCourse: course => dispatch(courseActions.createCourse(course))
+        //createCourse: course => dispatch(courseActions.createCourse(course)) B1
+        actions: bindActionCreators(courseActions, dispatch) // B2 convinient method that looks through all actions and wrap them in a call to dispatch
     };
 }
 
