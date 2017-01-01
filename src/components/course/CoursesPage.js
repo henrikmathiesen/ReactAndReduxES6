@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button, FormControl } from 'react-bootstrap';
 import * as courseActions from '../../actions/courseActions';
+import CourseList from './CourseList';
 
 class CoursePage extends Component {
 
@@ -44,18 +45,19 @@ class CoursePage extends Component {
     }
 
     render() {
-        const buttonBsStyle = this.state.course.title ? 'success' : 'warning';
 
+        const buttonBsStyle = this.state.course.title ? 'success' : 'warning';
+        const { courses } = this.props;
 
         // TODO: Replace div with bootstrap classes with the actual component, https://react-bootstrap.github.io/components.html#grid
-
+        // TODO: Refactor markup (to perhaps a CoursesDisplay component)
         return (
             <div className="row">
                 <div className="col-md-8">
                     <div className="row">
                         <div className="col-xs-12">
                             <h1>Courses</h1>
-                            {this.props.courses.map((course, index) => <div key={index}>{course.title}</div>)}
+                            <CourseList courses={courses} />
                         </div>
                     </div>
                     <div className="row">
