@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, FormControl } from 'react-bootstrap';
+//import { Button, FormControl } from 'react-bootstrap';        // X: when form was inline ... Keeping for now, to better understand flow
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 
@@ -9,44 +9,46 @@ class CoursePage extends Component {
 
     // Call super(props) only if you want to access this.props inside the constructor. React automatically set it for you if you want to access it anywhere else.
     // http://cheng.logdown.com/posts/2016/03/26/683329 , http://stackoverflow.com/questions/30571875/whats-the-difference-between-super-and-superprops-in-react-when-using-e
-    constructor(props, context) {
-        super(props, context);
+    // X: when form was inline ... Keeping for now, to better understand flow
+    // constructor(props, context) {
+    //     super(props, context);
 
-        this.state = {
-            course: {
-                title: ''
-            }
-        };
+        
+    //     this.state = {
+    //         course: {
+    //             title: ''
+    //         }
+    //     };
 
-        // Place these in the constructor and not in the render method, for performance reasons
-        this.changeCourse = this.changeCourse.bind(this);
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onClickSave = this.onClickSave.bind(this);
-    }
+        
+    //     // Place these in the constructor and not in the render method, for performance reasons
+    //     this.changeCourse = this.changeCourse.bind(this);
+    //     this.onTitleChange = this.onTitleChange.bind(this);
+    //     this.onClickSave = this.onClickSave.bind(this);
+    // }
 
-    changeCourse(title) {
-        const course = this.state.course;
-        course.title = title;
-        this.setState({ course: course });
-    }
-
-    onTitleChange(event) {
-        const title = event.target.value;
-        this.changeCourse(title);
-    }
-
-    onClickSave() {
-        if (!this.state.course.title) { return; }
-        console.log(`Saving course: ${this.state.course.title}`);
-        //this.props.dispatch(courseActions.createCourse(this.state.course)); // A
-        //this.props.createCourse(this.state.course); // B1
-        this.props.actions.createCourse(this.state.course); // B2
-        this.changeCourse('');
-    }
+    // X: when form was inline ... Keeping for now, to better understand flow
+    // changeCourse(title) {
+    //     const course = this.state.course;
+    //     course.title = title;
+    //     this.setState({ course: course });
+    // }
+    // onTitleChange(event) {
+    //     const title = event.target.value;
+    //     this.changeCourse(title);
+    // }
+    // onClickSave() {
+    //     if (!this.state.course.title) { return; }
+    //     console.log(`Saving course: ${this.state.course.title}`);
+    //     //this.props.dispatch(courseActions.createCourse(this.state.course)); // A
+    //     //this.props.createCourse(this.state.course); // B1
+    //     this.props.actions.createCourse(this.state.course); // B2
+    //     this.changeCourse('');
+    // }
 
     render() {
 
-        const buttonBsStyle = this.state.course.title ? 'success' : 'warning';
+        //const buttonBsStyle = this.state.course.title ? 'success' : 'warning'; // X: when form was inline ... Keeping for now, to better understand flow
         const { courses } = this.props;
 
         // TODO: Replace div with bootstrap classes with the actual component, https://react-bootstrap.github.io/components.html#grid
@@ -65,26 +67,30 @@ class CoursePage extends Component {
                             <h2>Add Course</h2>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-xs-9 col-sm-8">
-                            <FormControl
-                                type="text"
-                                value={this.state.course.title}
-                                placeholder="Course name"
-                                onChange={this.onTitleChange} />
-                        </div>
-                        <div className="col-xs-3 col-sm-4">
-                            <Button
-                                block
-                                bsStyle={buttonBsStyle}
-                                onClick={this.onClickSave}>
-                                Add
-                            </Button>
-                        </div>
-                    </div>
                 </div>
             </div>
         );
+
+        /*
+            // X: when form was inline ... Keeping for now, to better understand flow
+            <div className="row">
+                <div className="col-xs-9 col-sm-8">
+                    <FormControl
+                        type="text"
+                        value={this.state.course.title}
+                        placeholder="Course name"
+                        onChange={this.onTitleChange} />
+                </div>
+                <div className="col-xs-3 col-sm-4">
+                    <Button
+                        block
+                        bsStyle={buttonBsStyle}
+                        onClick={this.onClickSave}>
+                        Add
+                    </Button>
+                </div>
+            </div>
+        */
     }
 }
 
