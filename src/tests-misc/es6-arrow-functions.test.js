@@ -18,7 +18,7 @@ describe('ES6 arrow functions', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('Should understand that a function with one parameter does not require parameters', () => {
+    it('Should understand that a function with one parameter does not require parentheses', () => {
         const foo = name => { return 'Hi ' + name };
         const actual = foo('Kalle');
         const expected = 'Hi Kalle';
