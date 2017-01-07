@@ -1,10 +1,12 @@
 {
   "name": "react-and-redux-es6",
   "version": "0.1.0",
+  "deployhomepage": "",
   "homepage": "http://henrikmathiesen.github.io/react-and-redux-es6",
   "private": true,
   "devDependencies": {
     "gh-pages": "0.12.0",
+    "http-server": "^0.9.0",
     "react-scripts": "0.8.4",
     "redux-immutable-state-invariant": "^1.2.4"
   },
@@ -23,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
+    "testdeploy":"npm run build && http-server build -p 3000",
     "deploy": "npm run build && gh-pages -d build",
     "build": "react-scripts build",
     "clean-gh-pages": "rm -rf node_modules/gh-pages/.cache",
