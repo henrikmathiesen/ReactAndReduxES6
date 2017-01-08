@@ -4,6 +4,7 @@ import App from './components/App';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import CoursePage from './components/course/CoursesPage';
+import ManageCoursePage from './components/course/ManageCoursePage';
 
 // Always load App, send component (imported above) for matching route down to App as prop
 export default (
@@ -11,5 +12,7 @@ export default (
         <IndexRoute component={HomePage}/>
         <Route path="/about" component={AboutPage} />
         <Route path="/courses" component={CoursePage} />
+        <Route path="/course" component={ManageCoursePage} />
+        <Route path="/course/:id" component={ManageCoursePage} />
     </Route>
 );
