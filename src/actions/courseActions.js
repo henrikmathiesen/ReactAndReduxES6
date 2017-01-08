@@ -1,14 +1,12 @@
 import courseApi from '../api/mockCourseApi';
-
-export const CREATE_COURSE = 'CREATE_COURSE';
-export const LOAD_COURSES_SUCCESS = 'LOAD_COURSES_SUCCESS';
+import * as actionTypes from './actionTypes';
 
 export function createCourse(course) {
-    return { type: CREATE_COURSE, course };
+    return { type: actionTypes.CREATE_COURSE, course };
 }
 
 export function loadCoursesSuccess(courses) {
-    return { type: LOAD_COURSES_SUCCESS, courses };
+    return { type: actionTypes.LOAD_COURSES_SUCCESS, courses };
 }
 
 // thunk (dispatch this action first, then this async action will dispatch loadCoursesSuccess above, our reducer will pick that up
