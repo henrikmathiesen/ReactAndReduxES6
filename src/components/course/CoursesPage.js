@@ -97,7 +97,7 @@ class CoursePage extends Component {
 CoursePage.propTypes = {
     //dispatch: PropTypes.func.isRequired, -- no longer injected since we use aproach B
     courses: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired // Needed with aproach B2
 };
 
 // - In this component, I would like to access courses from the Redux Store via this.props.courses (state is the state in the store). ownProps are this components props in case we need to access those here (for example routing info)
