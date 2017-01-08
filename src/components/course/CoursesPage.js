@@ -109,6 +109,7 @@ function mapStateToProps(state, ownProps) {
 
 // - In this component, what Redux Actions do I want to use in this component, this is optional but if omitted we have to manually dispatch with this.props.dispatch(courseActions.createCourse(this.state.course)); A)
 // We use it, so instead of dispatching manually above (A), instead we do B (and props does not have a dispatch property)
+// However, we are not using any actions in this component, since all we do is displaying courses
 function mapDispatchToProps(dispatch) {
     return {
         //createCourse: course => dispatch(courseActions.createCourse(course)) B1
@@ -116,4 +117,5 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
+// mapStateToProps, mapDispatchToProps can be called whatever we like
 export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);
