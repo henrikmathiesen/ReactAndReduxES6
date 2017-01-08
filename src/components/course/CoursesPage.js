@@ -100,14 +100,15 @@ CoursePage.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-// - In this component, I would like to access courses from the store via this.props.courses (state is the state in the store). ownProps are this components props in case we need to access those here (for example routing info)
+// - In this component, I would like to access courses from the Redux Store via this.props.courses (state is the state in the store). ownProps are this components props in case we need to access those here (for example routing info)
 function mapStateToProps(state, ownProps) {
     return {
         courses: state.courseReducer
     };
 }
 
-// Used instead of dispatching manually above (A), instead uses B
+// - In this component, what Redux Actions do I want to use in this component, this is optional but if omitted we have to manually dispatch with this.props.dispatch(courseActions.createCourse(this.state.course)); A)
+// We use it, so instead of dispatching manually above (A), instead we do B (and props does not have a dispatch property)
 function mapDispatchToProps(dispatch) {
     return {
         //createCourse: course => dispatch(courseActions.createCourse(course)) B1
@@ -115,5 +116,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-// Omitting mapDispatchToProps (what actions to expose on our component) as second argument means that our component gets a dispatch property attached to it (this.props.dispatch(), A)
 export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);
