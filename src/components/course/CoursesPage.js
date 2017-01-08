@@ -100,7 +100,7 @@ CoursePage.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-// - In this component, I would like to access courses from the store via this.props.courses. ownProps are this components props in case we need to access those here
+// - In this component, I would like to access courses from the store via this.props.courses (state is the state in the store). ownProps are this components props in case we need to access those here (for example routing info)
 function mapStateToProps(state, ownProps) {
     return {
         courses: state.courseReducer
