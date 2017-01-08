@@ -56,3 +56,5 @@ CourseForm.propTypes = {
     loading: React.PropTypes.bool,
     errors: React.PropTypes.object
 };
+
+export default CourseForm;
