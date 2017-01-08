@@ -62,17 +62,17 @@ class CoursePage extends Component {
                             <CourseList courses={courses} />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-xs-12">
-                            <h2>Add Course</h2>
-                        </div>
-                    </div>
                 </div>
             </div>
         );
 
         /*
             // X: when form was inline ... Keeping for now, to better understand flow
+            <div className="row">
+                <div className="col-xs-12">
+                    <h2>Add Course</h2>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-xs-9 col-sm-8">
                     <FormControl
@@ -109,7 +109,7 @@ function mapStateToProps(state, ownProps) {
 
 // - In this component, what Redux Actions do I want to use in this component, this is optional but if omitted we have to manually dispatch with this.props.dispatch(courseActions.createCourse(this.state.course)); A)
 // We use it, so instead of dispatching manually above (A), instead we do B (and props does not have a dispatch property)
-// However, we are not using any actions in this component, since all we do is displaying courses
+// However, we are not using any actions in this component, since all we do is displaying courses (teacher keeps it here anyway)
 function mapDispatchToProps(dispatch) {
     return {
         //createCourse: course => dispatch(courseActions.createCourse(course)) B1
