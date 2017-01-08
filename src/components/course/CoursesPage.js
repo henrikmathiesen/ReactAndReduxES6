@@ -112,7 +112,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
     return {
         //createCourse: course => dispatch(courseActions.createCourse(course)) B1
-        actions: bindActionCreators(courseActions, dispatch) // B2 convinient method that looks through all actions (import them all with *) and wrap them in a call to dispatch
+        actions: bindActionCreators(courseActions, dispatch) // B2 convinient method that looks through all actions (import them all with *) and wrap them in a call to dispatch, so we dont need to manually map each
     };
 }
 
