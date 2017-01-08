@@ -11,7 +11,7 @@ export function loadCoursesSuccess(courses) {
     return { type: LOAD_COURSES_SUCCESS, courses };
 }
 
-// thunk
+// thunk (dispatch this action first, then this async action will dispatch loadCoursesSuccess above, our reducer will pick that up
 export function loadCourses() {
     return function (dispatch) {
         return courseApi.getAllCourses()
