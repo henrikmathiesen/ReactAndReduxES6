@@ -51,8 +51,8 @@ class CoursePage extends Component {
         //const buttonBsStyle = this.state.course.title ? 'success' : 'warning'; // X: when form was inline ... Keeping for now, to better understand flow
         const { courses } = this.props;
 
-        // TODO: Replace div with bootstrap classes with the actual component, https://react-bootstrap.github.io/components.html#grid
-        // TODO: Refactor markup (to perhaps a CoursesDisplay component)
+        // COULD: Replace div with bootstrap classes with the actual component, https://react-bootstrap.github.io/components.html#grid
+        // COULD: Refactor markup (to perhaps a CoursesDisplay component)
         return (
             <div className="row">
                 <div className="col-md-8">
