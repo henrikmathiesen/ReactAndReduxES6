@@ -8,7 +8,8 @@
     "gh-pages": "0.12.0",
     "http-server": "0.9.0",
     "react-scripts": "0.8.4",
-    "redux-immutable-state-invariant": "1.2.4"
+    "redux-immutable-state-invariant": "1.2.4",
+    "rimraf": "2.6.1"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
@@ -28,7 +29,7 @@
     "testdeploy":"npm run build && http-server build -p 3000",
     "deploy": "npm run build && gh-pages -d build",
     "build": "react-scripts build",
-    "clean-gh-pages": "rm -rf node_modules/gh-pages/.cache",
+    "clean-gh-pages": "rimraf node_modules/gh-pages/.cache",
     "eject": "react-scripts eject"
   }
 }
